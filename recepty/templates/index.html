@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Recepty</title>
+</head>
+<body>
+    <h1>Seznam receptů</h1>
+    <ul>
+        {% for recept in recepty %}
+            <li>{{ recept.nazev }} – {{ recept.cas_na_pripravu }} min</li>
+        {% empty %}
+            <li>Žádné recepty.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

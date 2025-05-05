@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block css %}
+    body {
+        background-color: #ddd;
+    }
+{% endblock %}
+
+{% block title %}
+    {{ nadpis }}
+{% endblock %}
+
+{% block content %}
+    <h1 class="bg-warning text-center">{{ nadpis }}</h1>
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th>Název receptu</th>
+            <th>Doba přípravy</th>
+            <th>Kuchař</th>
+            <th>Kategorie</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for recept in data %}
+        <tr>
+            <td><a href="{% url 'detail_receptu' recept.id %}">{{ recept.nazev|upper }}</a></td>
+            <td>{{ recept.doba_pripravy }} min</td>
+            <td>{{ recept.kuchar.jmeno|first }}. {{ recept.kuchar.prijmeni }}</td>
+            <td>
+                {% for kategorie in recept.kategorie.all %}
+                    <span class="badge badge-info m-1">{{ kategorie.nazev }}</span>
+                {% endfor %}
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot></tfoot>
+    </table>
+{% endblock %}

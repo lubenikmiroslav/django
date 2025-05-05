@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block css %}
+{% endblock %}
+
+{% block title %}
+    {{ titulek }}
+{% endblock %}
+
+{% block content %}
+    <h1 class="bg-warning text-center">{{ recept.nazev }}</h1>
+    <div class="row">
+        <section class="col-md-4">
+            {% if recept.fotografie %}
+                <div><img src="{{ recept.fotografie.url }}" alt="Fotka receptu: {{ recept.nazev }}"></div>
+            {% endif %}
+            <p>
+                {% for kategorie in recept.kategorie.all %}
+                    <span class="badge badge-danger">{{ kategorie.nazev }}</span>
+                {% endfor %}
+            </p>
+        </section>
+        <section class="col-md-8">
+            <h3>
+                Autor: {{ recept.kuchar.jmeno }} {{ recept.kuchar.prijmeni }}
+            </h3>
+            <h4>Postup:</h4>
+            <div>{{ recept.popis }}</div>
+            <hr>
+            <p>Doba přípravy: {{ recept.doba_pripravy }} minut</p>
+        </section>
+    </div>
+    <div><a href="{% url 'seznam_receptu' %}">Zpět na seznam receptů</a></div>
+{% endblock %}

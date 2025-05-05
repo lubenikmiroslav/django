@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Kuchařka{% endblock %}</title>
+</head>
+<body>
+    <nav>
+        <a href="/">Recepty</a> |
+        <a href="/kuchari/">Kuchaři</a>
+    </nav>
+    <hr>
+    {% block content %}{% endblock %}
+</body>
+</html>
