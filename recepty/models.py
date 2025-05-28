@@ -27,4 +27,3 @@ class Recept(models.Model):
     def __str__(self):
         return self.nazev
 
-# Pokud HODNOCENÍ opravdu nechceš používat, nepřidávej ho do importu nikde
